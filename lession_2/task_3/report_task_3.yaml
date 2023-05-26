@@ -1,0 +1,9 @@
+item:
+- pen
+- pencil
+- workbook
+quantity: 10
+price:
+  pen: 7€ - 10€
+  pencil: 5€ - 8€
+  workbook: 1€ - 5€

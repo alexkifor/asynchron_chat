@@ -1,0 +1,25 @@
+{
+    "orders": [
+        {
+            "item": "printer",
+            "quantity": "10",
+            "price": "12500",
+            "buyer": "Ivanov I.P.",
+            "date": "23.05.2023"
+        },
+        {
+            "item": "router",
+            "quantity": "7",
+            "price": "4300",
+            "buyer": "Petrov I.I.",
+            "date": "20.05.2023"
+        },
+        {
+            "item": "iphone",
+            "quantity": "1",
+            "price": "72500",
+            "buyer": "Sidorov P.P.",
+            "date": "13.05.2023"
+        }
+    ]
+}
