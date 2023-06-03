@@ -1,0 +1,13 @@
+2023-06-03 22:49:37,971 INFO       trying to start socket from on the server
+2023-06-03 22:49:37,981 INFO       server socket waiting for connection on 5555 port with ip address: 127.8.8.8
+2023-06-03 22:49:54,319 INFO       connection with ('127.0.0.1', 47724)
+2023-06-03 22:49:54,322 DEBUG      message received {'action': 'presence', 'time': 1685821794.321238, 'type': 'status', 'user': {'account_name': 'Guest'}}
+2023-06-03 22:49:54,322 DEBUG      parsig message from client {'action': 'presence', 'time': 1685821794.321238, 'type': 'status', 'user': {'account_name': 'Guest'}}
+2023-06-03 22:49:54,322 INFO       OK, message contains without error
+2023-06-03 22:49:54,322 INFO       generating response {'response': 200}
+2023-06-03 22:49:54,323 INFO       sending response {'response': 200} to client
+2023-06-03 22:49:54,323 DEBUG      disable connection with ('127.0.0.1', 47724)
+2023-06-03 22:53:34,781 INFO       trying to start socket from on the server
+2023-06-03 22:53:34,788 CRITICAL   starting server on an invalid 111 port
+2023-06-03 22:58:17,467 INFO       trying to start socket from on the server
+2023-06-03 22:58:17,468 INFO       server socket waiting for connection on 1111 from any ip address
