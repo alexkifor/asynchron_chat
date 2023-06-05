@@ -1,0 +1,7 @@
+2023-06-03 22:59:26,628 INFO       connection with ('127.0.0.1', 36272)
+2023-06-03 22:59:26,632 DEBUG      message received {'action': 'presence', 'time': 1685822366.6311219, 'type': 'status', 'user': {'account_name': 'Guest'}}
+2023-06-03 22:59:26,632 DEBUG      parsig message from client {'action': 'presence', 'time': 1685822366.6311219, 'type': 'status', 'user': {'account_name': 'Guest'}}
+2023-06-03 22:59:26,632 INFO       OK, message contains without error
+2023-06-03 22:59:26,632 INFO       generating response {'response': 200}
+2023-06-03 22:59:26,633 INFO       sending response {'response': 200} to client
+2023-06-03 22:59:26,633 DEBUG      disable connection with ('127.0.0.1', 36272)

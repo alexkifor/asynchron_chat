@@ -1,0 +1,14 @@
+2023-06-03 22:49:54,318 INFO       trying to start socket on the client
+2023-06-03 22:49:54,318 INFO       started client socket on 5555 port with ip_address 127.8.8.8
+2023-06-03 22:49:54,320 INFO       server connection established
+2023-06-03 22:49:54,321 DEBUG      generated message {'action': 'presence', 'time': 1685821794.321238, 'type': 'status', 'user': {'account_name': 'Guest'}} to send the server from Guest
+2023-06-03 22:49:54,324 INFO       sending message {'action': 'presence', 'time': 1685821794.321238, 'type': 'status', 'user': {'account_name': 'Guest'}} from client to server
+2023-06-03 22:49:54,324 DEBUG      parsing response from the server {'response': 200}
+2023-06-03 22:49:54,325 INFO       successful, client received a response from sever  : 200: OK
+2023-06-03 22:59:26,626 INFO       trying to start socket on the client
+2023-06-03 22:59:26,627 INFO       started client socket on 1111 port with ip_address 127.0.0.1
+2023-06-03 22:59:26,630 INFO       server connection established
+2023-06-03 22:59:26,631 DEBUG      generated message {'action': 'presence', 'time': 1685822366.6311219, 'type': 'status', 'user': {'account_name': 'Guest'}} to send the server from Guest
+2023-06-03 22:59:26,634 INFO       sending message {'action': 'presence', 'time': 1685822366.6311219, 'type': 'status', 'user': {'account_name': 'Guest'}} from client to server
+2023-06-03 22:59:26,634 DEBUG      parsing response from the server {'response': 200}
+2023-06-03 22:59:26,635 INFO       successful, client received a response from sever  : 200: OK
