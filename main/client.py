@@ -7,9 +7,11 @@ sys.path.append('../')
 from main.utils import send_msg, get_msg
 import logging
 import log.config_client
+from decos import log
 
 CLI_LOG = logging.getLogger('client')
 
+@log
 def create_msg(account_name="Guest"):
     '''
     Функция формирует сообщение для сервера
@@ -28,7 +30,7 @@ def create_msg(account_name="Guest"):
     CLI_LOG.debug(f"generated message {msg} to send the server from {account_name}")
     return msg
 
-
+@log
 def handler_server_msg(data):
     '''
     Функция обрабатывает сообщения от сервера и выдает ответ в виде строки

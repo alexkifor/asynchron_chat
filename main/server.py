@@ -6,10 +6,12 @@ from main.utils import send_msg, get_msg
 from main.variables import *
 import logging
 import log.config_server
+from decos import log
 
 
 SERV_LOG = logging.getLogger('server')
 
+@log
 def handler_client_msg(data:dict):
     '''
     Функция обрабатывает сообщения от клиента и выдает ответ в виде словаря
