@@ -1,7 +1,12 @@
-2023-06-03 22:59:26,628 INFO       connection with ('127.0.0.1', 36272)
-2023-06-03 22:59:26,632 DEBUG      message received {'action': 'presence', 'time': 1685822366.6311219, 'type': 'status', 'user': {'account_name': 'Guest'}}
-2023-06-03 22:59:26,632 DEBUG      parsig message from client {'action': 'presence', 'time': 1685822366.6311219, 'type': 'status', 'user': {'account_name': 'Guest'}}
-2023-06-03 22:59:26,632 INFO       OK, message contains without error
-2023-06-03 22:59:26,632 INFO       generating response {'response': 200}
-2023-06-03 22:59:26,633 INFO       sending response {'response': 200} to client
-2023-06-03 22:59:26,633 DEBUG      disable connection with ('127.0.0.1', 36272)
+2023-06-07 23:45:54,282 INFO       trying to start socket from on the server
+2023-06-07 23:45:54,283 INFO       server socket waiting for connection on 7777 from any ip address
+2023-06-07 23:46:08,847 INFO       connection with ('127.0.0.1', 54580)
+2023-06-07 23:46:08,868 DEBUG      A function get_msg was called with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 54580)>,), {} from the function main
+2023-06-07 23:46:08,869 DEBUG      message received {'action': 'presence', 'time': 1686170768.8481803, 'type': 'status', 'user': {'account_name': 'Guest'}}
+2023-06-07 23:46:08,869 DEBUG      parsig message from client {'action': 'presence', 'time': 1686170768.8481803, 'type': 'status', 'user': {'account_name': 'Guest'}}
+2023-06-07 23:46:08,870 INFO       OK, message contains without error
+2023-06-07 23:46:08,870 DEBUG      A function handler_client_msg was called with parameters ({'action': 'presence', 'time': 1686170768.8481803, 'type': 'status', 'user': {'account_name': 'Guest'}},), {} from the function main
+2023-06-07 23:46:08,871 INFO       generating response {'response': 200}
+2023-06-07 23:46:08,891 DEBUG      A function send_msg was called with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 54580)>, {'response': 200}), {} from the function main
+2023-06-07 23:46:08,894 INFO       sending response {'response': 200} to client
+2023-06-07 23:46:08,899 DEBUG      disable connection with ('127.0.0.1', 54580)

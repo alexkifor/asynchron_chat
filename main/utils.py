@@ -1,5 +1,7 @@
 import json
+from decos import log
 
+@log
 def get_msg(client):
     encode_resp = client.recv(1024)
     if isinstance(encode_resp, bytes):
@@ -10,6 +12,7 @@ def get_msg(client):
         raise ValueError
     raise ValueError
 
+@log
 def send_msg(socket, msg):
     json_msg = json.dumps(msg)
     msg_bytes = json_msg.encode('utf-8')
