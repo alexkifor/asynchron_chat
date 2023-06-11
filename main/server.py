@@ -1,6 +1,7 @@
 from socket import *
+import select
 import sys
-import json
+import time
 sys.path.append('../')
 from main.utils import send_msg, get_msg
 from main.variables import *
@@ -12,23 +13,27 @@ from decos import log
 SERV_LOG = logging.getLogger('server')
 
 @log
-def handler_client_msg(data:dict):
+def handler_client_msg(data:dict, msg_list:list, cli_sock):
     '''
     Функция обрабатывает сообщения от клиента и выдает ответ в виде словаря
     :param data:
     :return:
     '''
     SERV_LOG.debug(f'parsig message from client {data}')
-    if 'action' in data and data['action'] == 'presence' and 'type' in data and data['type'] == 'status' and 'time' in data \
+    if 'action' in data and data['action'] == 'presence' and 'time' in data \
         and 'user' in data and data['user']['account_name'] == 'Guest':
-        SERV_LOG.info('OK, message contains without error')
-        return {'response': 200}
+        send_msg(cli_sock, {'response': 200})
+        return
+    elif 'action' in data and data['action'] == 'message' and 'time' in data \
+        and 'msg_text' in data:
+        msg_list.append((data['account_name'], data['msg_text']))
+        return
     else:
-        SERV_LOG.error('WRONG, massege contains error')
-        return {
+        send_msg(cli_sock, {
             'response': 400,
             'error': 'Bad request'
-        }
+        })
+        return 
 
 
 def main():
@@ -68,23 +73,51 @@ def main():
     
     s = socket(AF_INET, SOCK_STREAM)   # Создает сокет TCP
     s.bind((ip, port))                 # Присваивает порт 8888
+    s.settimeout(1)
     s.listen(5)                        # Переходит в режим ожидания запросов;
+    clients = []
+    messages = []
 
     while True:
-        client, addr = s.accept()
-        SERV_LOG.info(f'connection with {addr}')
         try:
-            msg_from_client = get_msg(client)
-            SERV_LOG.debug(f'message received {msg_from_client}')
-            resp = handler_client_msg(msg_from_client)
-            SERV_LOG.info(f'generating response {resp}')
-            send_msg(client, resp)
-            SERV_LOG.info(f'sending response {resp} to client')
-            SERV_LOG.debug(f'disable connection with {addr}')
-            client.close()
-        except (ValueError, json.JSONDecodeError):
-                SERV_LOG.error(f'WRONG, incoorect data received from client {addr}, connection is closed ')
-                client.close()
+            client, addr = s.accept()   
+        except OSError:
+            pass
+        else:
+            SERV_LOG.info(f"connection server with {addr}")
+            clients.append(client)
+        
+        rec_cli_lst = []
+        send_cli_lst = []
+        err_lst = []
+        
+        try:
+            if clients:
+                rec_cli_lst, send_cli_lst, err_lst = select.select(clients, clients, [], 0)
+        except OSError:
+            pass
+
+        if rec_cli_lst:
+            for client in rec_cli_lst:
+                try:
+                    handler_client_msg(get_msg(client), messages, client)
+                except:
+                    SERV_LOG.info(f"client {client.getpeername()} disconnected from the server")
+                    clients.remove(client)
+        if messages and send_cli_lst:
+            msg = {
+                'action':  'message',
+                'sender' : messages[0][0],
+                'time' : time.time(),
+                'msg_text' : messages[0][1]
+            }
+            del messages[0]
+            for client in send_cli_lst:
+                try:
+                    send_msg(client, msg)
+                except:
+                    SERV_LOG.info(f"client {client.getpeername()} disconnected from the server")
+                    clients.remove(client)
 
 
 
