@@ -1,11 +1,45 @@
-2023-06-07 23:46:08,845 INFO       trying to start socket on the client
-2023-06-07 23:46:08,846 INFO       started client socket on 7777 port with ip_address 127.0.0.1
-2023-06-07 23:46:08,847 INFO       server connection established
-2023-06-07 23:46:08,848 DEBUG      generated message {'action': 'presence', 'time': 1686170768.8481803, 'type': 'status', 'user': {'account_name': 'Guest'}} to send the server from Guest
-2023-06-07 23:46:08,856 DEBUG      A function create_msg was called with parameters (), {} from the function main
-2023-06-07 23:46:08,866 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54580), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686170768.8481803, 'type': 'status', 'user': {'account_name': 'Guest'}}), {} from the function main
-2023-06-07 23:46:08,866 INFO       sending message {'action': 'presence', 'time': 1686170768.8481803, 'type': 'status', 'user': {'account_name': 'Guest'}} from client to server
-2023-06-07 23:46:08,872 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54580), raddr=('127.0.0.1', 7777)>,), {} from the function main
-2023-06-07 23:46:08,873 DEBUG      parsing response from the server {'response': 200}
-2023-06-07 23:46:08,873 INFO       successful, client received a response from sever  : 200: OK
-2023-06-07 23:46:08,874 DEBUG      A function handler_server_msg was called with parameters ({'response': 200},), {} from the function main
+2023-06-12 01:58:10,570 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-12 01:58:10,571 INFO       started client socket with parameters: addres server127.0.0.1, port 7777, working mode listen
+2023-06-12 01:58:10,573 INFO       server connection established
+2023-06-12 01:58:10,574 DEBUG      generated message 'presence' for user Guest
+2023-06-12 01:58:10,574 DEBUG      A function create_presence was called with parameters (), {} from the function main
+2023-06-12 01:58:10,576 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 42574), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686524290.5741432, 'user': {'account_name': 'Guest'}}), {} from the function main
+2023-06-12 02:03:59,746 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-12 02:03:59,749 INFO       started client socket with parameters: addres server127.0.0.1, port 7777, working mode listen
+2023-06-12 02:03:59,753 INFO       server connection established
+2023-06-12 02:03:59,753 DEBUG      generated message 'presence' for user Guest
+2023-06-12 02:03:59,754 DEBUG      A function create_presence was called with parameters (), {} from the function main
+2023-06-12 02:03:59,756 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49060), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686524639.7534769, 'user': {'account_name': 'Guest'}}), {} from the function main
+2023-06-12 02:14:14,576 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-12 02:14:14,576 INFO       started client socket with parameters: addres server127.0.0.1, port 7777, working mode listen
+2023-06-12 02:14:14,578 INFO       server connection established
+2023-06-12 02:14:14,579 DEBUG      generated message 'presence' for user Guest
+2023-06-12 02:14:14,579 DEBUG      A function create_presence was called with parameters (), {} from the function main
+2023-06-12 02:14:14,580 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 45032), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686525254.5790937, 'user': {'account_name': 'Guest'}}), {} from the function main
+2023-06-12 02:22:35,585 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-12 02:22:35,586 INFO       started client socket with parameters: addres server127.0.0.1, port 7777, working mode listen
+2023-06-12 02:22:35,588 INFO       server connection established
+2023-06-12 02:22:35,588 DEBUG      generated message 'presence' for user Guest
+2023-06-12 02:22:35,589 DEBUG      A function create_presence was called with parameters (), {} from the function main
+2023-06-12 02:22:35,593 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 41580), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686525755.5884159, 'user': {'account_name': 'Guest'}}), {} from the function main
+2023-06-12 02:22:36,600 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 41580), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-06-12 02:22:36,601 DEBUG      generated hello_message from the server: {'response': 200}
+2023-06-12 02:22:36,601 DEBUG      A function proc_response_serv_ans was called with parameters ({'response': 200},), {} from the function main
+2023-06-12 02:22:36,601 INFO       sending message 200 : OK from server to client
+2023-06-12 02:23:27,402 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-12 02:23:27,403 INFO       started client socket with parameters: addres server127.0.0.1, port 7777, working mode send
+2023-06-12 02:23:27,404 INFO       server connection established
+2023-06-12 02:23:27,405 DEBUG      generated message 'presence' for user Guest
+2023-06-12 02:23:27,406 DEBUG      A function create_presence was called with parameters (), {} from the function main
+2023-06-12 02:23:27,407 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 45468), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686525807.405666, 'user': {'account_name': 'Guest'}}), {} from the function main
+2023-06-12 02:23:28,447 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 45468), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-06-12 02:23:28,448 DEBUG      generated hello_message from the server: {'response': 200}
+2023-06-12 02:23:28,449 DEBUG      A function proc_response_serv_ans was called with parameters ({'response': 200},), {} from the function main
+2023-06-12 02:23:28,449 INFO       sending message 200 : OK from server to client
+2023-06-12 02:23:41,543 DEBUG      generated dict_message Hello! to send the server from Guest
+2023-06-12 02:23:41,544 DEBUG      A function create_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 45468), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-06-12 02:23:41,545 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 45468), raddr=('127.0.0.1', 7777)>, {'action': 'message', 'time': 1686525821.543439, 'account_name': 'Guest', 'msg_text': 'Hello!'}), {} from the function main
+2023-06-12 02:23:42,548 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 41580), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-06-12 02:23:42,549 INFO       message received from user Guest: Hello!
+2023-06-12 02:23:42,549 DEBUG      A function msg_from_server was called with parameters ({'action': 'message', 'sender': 'Guest', 'time': 1686525822.5477133, 'msg_text': 'Hello!'},), {} from the function main
+2023-06-12 02:24:09,815 INFO       shutdown by user Guest command
