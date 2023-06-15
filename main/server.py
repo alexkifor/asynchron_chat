@@ -13,7 +13,7 @@ from decos import log
 SERV_LOG = logging.getLogger('server')
 
 @log
-def handler_client_msg(data:dict, msg_list:list, cli_sock):
+def handler_client_msg(data, msg_list, client, clients, names):
     '''
     Функция обрабатывает сообщения от клиента и выдает ответ в виде словаря
     :param data:
@@ -21,19 +21,42 @@ def handler_client_msg(data:dict, msg_list:list, cli_sock):
     '''
     SERV_LOG.debug(f'parsig message from client {data}')
     if 'action' in data and data['action'] == 'presence' and 'time' in data \
-        and 'user' in data and data['user']['account_name'] == 'Guest':
-        send_msg(cli_sock, {'response': 200})
+        and 'user' in data:
+            if data['user']['account_name'] not in names.keys():
+                names[data['user']['account_name']] = client
+                send_msg(client, {'response': 200})
+            else:
+                send_msg(client, {
+                    'response': 400,
+                    'error': 'Name already in use'
+                    })
+                clients.remove(client)
+                client.close()
+            return
+    elif 'action' in data and data['action'] == 'message' and 'to' in data and 'time' in data \
+        and 'from' in data and 'msg_text' in data:
+        msg_list.append(data)
         return
-    elif 'action' in data and data['action'] == 'message' and 'time' in data \
-        and 'msg_text' in data:
-        msg_list.append((data['account_name'], data['msg_text']))
+    elif 'action' in data and data['action'] == 'exit' and 'account_name' in data:
+        clients.remove(names[data['account_name']])
+        names[data['account_name']].close()
+        del names[data['account_name']]
         return
     else:
-        send_msg(cli_sock, {
+        send_msg(client, {
             'response': 400,
-            'error': 'Bad request'
+            'error': 'Incorrect response'
         })
         return 
+    
+def proc_msg_to_client(msg, names, cli_sock):
+    if msg['to'] in names and names[msg['to']] in cli_sock:
+        send_msg(names[msg['to']], msg)
+        SERV_LOG.info(f"message sent to user {msg['to']} from user {msg['from']}")
+    elif msg['to'] in names and names[msg['from']] not in cli_sock:
+        raise ConnectionError
+    else:
+        SERV_LOG.error(f"user {msg['to']} not register on the server, sending message is not imposible")
 
 
 def main():
@@ -77,7 +100,8 @@ def main():
     s.listen(5)                        # Переходит в режим ожидания запросов;
     clients = []
     messages = []
-
+    names = {}
+    
     while True:
         try:
             client, addr = s.accept()   
@@ -100,24 +124,19 @@ def main():
         if rec_cli_lst:
             for client in rec_cli_lst:
                 try:
-                    handler_client_msg(get_msg(client), messages, client)
+                    handler_client_msg(get_msg(client), messages, client, clients, names)
                 except:
                     SERV_LOG.info(f"client {client.getpeername()} disconnected from the server")
                     clients.remove(client)
-        if messages and send_cli_lst:
-            msg = {
-                'action':  'message',
-                'sender' : messages[0][0],
-                'time' : time.time(),
-                'msg_text' : messages[0][1]
-            }
-            del messages[0]
-            for client in send_cli_lst:
-                try:
-                    send_msg(client, msg)
-                except:
-                    SERV_LOG.info(f"client {client.getpeername()} disconnected from the server")
-                    clients.remove(client)
+        for msg in messages:
+            try:
+                proc_msg_to_client(msg, names, send_cli_lst)
+            except:
+                SERV_LOG.info(f"Connection with user {msg['to']} was lost")
+                clients.remove(names[msg['to']])
+                del names[msg['to']]
+        messages.clear()
+      
 
 
 
