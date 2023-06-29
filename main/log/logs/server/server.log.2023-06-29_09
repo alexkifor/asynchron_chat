@@ -1,0 +1,7 @@
+2023-06-29 09:26:57,100 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-29 09:26:57,101 INFO       trying to start socket from on the server
+2023-06-29 09:26:57,102 INFO       server socket waiting for connection on 7777 port with ip address: .If ip_address is not soecified, server waiting for connection on 7777 from any ip address
+2023-06-29 09:27:08,321 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-29 09:27:08,322 CRITICAL   starting on an invalid lfhjqlkfjldjwkl host
+2023-06-29 09:27:30,194 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-29 09:27:30,195 CRITICAL   starting on an invalid 101 port
