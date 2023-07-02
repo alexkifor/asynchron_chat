@@ -13,7 +13,7 @@ while True:
     if ACTION == 'q':
         break
     elif ACTION == 's':
-        PROC.append(subprocess.Popen(f'python3 server.py', shell=True, stdout=subprocess.PIPE))
+        PROC.append(subprocess.Popen(f'gnome-terminal -e "python3 server.py"', shell=True, stdout=subprocess.PIPE))
         n = int(input('Enter clients value: '))
         for i in range(n):
             p = subprocess.Popen(f'gnome-terminal -e "python3 client.py -n test_{i}"', shell=True, stdout=subprocess.PIPE)

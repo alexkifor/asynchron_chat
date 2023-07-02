@@ -1,0 +1,67 @@
+2023-06-29 00:58:42,500 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 00:58:42,501 CRITICAL   starting on an invalid  host
+2023-06-29 00:59:50,785 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 00:59:50,786 CRITICAL   starting on an invalid  host
+2023-06-29 01:00:31,231 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:00:31,236 CRITICAL   starting on an invalid  host
+2023-06-29 01:06:52,460 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:09:24,503 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:09:24,504 CRITICAL   starting on an invalid  host
+2023-06-29 01:10:01,791 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:10:38,022 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:11:00,664 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:11:00,665 CRITICAL   starting on an invalid  host
+2023-06-29 01:16:01,692 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:17:36,390 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:19:36,905 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:19:36,905 CRITICAL   starting on an invalid  host
+2023-06-29 01:21:05,894 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:21:05,896 CRITICAL   starting on an invalid  host
+2023-06-29 01:21:56,807 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:24:04,207 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:25:26,160 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:36:13,571 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:36:52,688 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:37:32,671 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:39:20,355 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:39:54,336 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:40:23,539 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:41:08,313 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:53:55,035 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:56:02,014 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:56:02,015 CRITICAL   starting on an invalid lkfqkfkwflk host
+2023-06-29 01:56:43,303 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:56:43,304 CRITICAL   starting on an invalid 122.1.1.1 host
+2023-06-29 01:59:50,598 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 01:59:50,606 CRITICAL   starting on an invalid  host
+2023-06-29 02:00:41,512 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 02:01:42,656 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 02:01:57,471 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 02:01:57,472 CRITICAL   starting on an invalid 111.111.11 host
+2023-06-29 02:02:22,062 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 02:02:22,065 CRITICAL   starting on an invalid 111. host
+2023-06-29 02:06:47,577 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 02:07:27,007 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 02:08:22,142 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 02:08:22,144 INFO       trying to start socket from on the server
+2023-06-29 02:08:22,145 INFO       server socket waiting for connection on 7777 port with ip address: .If ip_address is not soecified, server waiting for connection on 7777 from any ip address
+2023-06-29 02:10:08,451 DEBUG      A function arg_parser was called with parameters (), {} from the function <module>
+2023-06-29 02:10:08,452 INFO       trying to start socket from on the server
+2023-06-29 02:10:08,453 INFO       server socket waiting for connection on 7777 port with ip address: .If ip_address is not soecified, server waiting for connection on 7777 from any ip address
+2023-06-29 02:15:22,045 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-29 02:15:22,046 INFO       trying to start socket from on the server
+2023-06-29 02:15:22,046 INFO       server socket waiting for connection on 7777 port with ip address: .If ip_address is not soecified, server waiting for connection on 7777 from any ip address
+2023-06-29 02:18:38,232 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-29 02:18:38,236 INFO       trying to start socket from on the server
+2023-06-29 02:18:38,237 INFO       server socket waiting for connection on 7777 port with ip address: .If ip_address is not soecified, server waiting for connection on 7777 from any ip address
+2023-06-29 02:19:20,718 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-29 02:19:20,719 INFO       trying to start socket from on the server
+2023-06-29 02:19:20,720 INFO       server socket waiting for connection on 7777 port with ip address: .If ip_address is not soecified, server waiting for connection on 7777 from any ip address
+2023-06-29 02:21:30,386 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-29 02:21:30,387 INFO       trying to start socket from on the server
+2023-06-29 02:21:30,387 INFO       server socket waiting for connection on 7777 port with ip address: .If ip_address is not soecified, server waiting for connection on 7777 from any ip address
+2023-06-29 02:21:56,990 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-29 02:21:56,990 CRITICAL   starting on an invalid 127.12 host
+2023-06-29 02:22:22,908 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-29 02:22:22,910 INFO       trying to start socket from on the server
+2023-06-29 02:22:22,911 INFO       server socket waiting for connection on 7777 port with ip address: 127.127.1.1.If ip_address is not soecified, server waiting for connection on 7777 from any ip address

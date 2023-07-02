@@ -17,3 +17,4 @@ def send_msg(socket, msg):
     json_msg = json.dumps(msg)
     msg_bytes = json_msg.encode('utf-8')
     socket.send(msg_bytes)
+
