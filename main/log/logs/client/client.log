@@ -169,3 +169,17 @@
 2023-06-30 00:58:01,379 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 43470), raddr=('127.0.0.1', 7777)>, {'action': 'exit', 'time': 1688075881.378576, 'account_name': 'test_1'}), {} from the function user_interactive
 2023-06-30 00:58:01,380 INFO       Connection ended after user test_1 command
 2023-06-30 00:58:01,738 CRITICAL   error sending response from server
+2023-07-03 17:09:32,131 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-03 17:09:32,132 INFO       server connection established
+2023-07-03 17:09:32,133 DEBUG      generated message 'presence' for user alexandr
+2023-07-03 17:09:32,134 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 34574), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688393372.13297, 'user': {'account_name': 'alexandr'}}), {} from the function init_sock
+2023-07-03 17:10:30,988 ERROR      invalid message received from client
+2023-07-03 17:12:03,580 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-03 17:12:03,583 INFO       server connection established
+2023-07-03 17:12:03,583 DEBUG      generated message 'presence' for user user_10
+2023-07-03 17:12:03,585 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52660), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688393523.58371, 'user': {'account_name': 'user_10'}}), {} from the function init_sock
+2023-07-03 17:12:04,135 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52660), raddr=('127.0.0.1', 7777)>,), {} from the function init_sock
+2023-07-03 17:12:04,135 DEBUG      generated hello_message from the server: {'response': 200}
+2023-07-03 17:12:04,135 INFO       sending message 200 : OK from server to client
+2023-07-03 17:12:04,137 DEBUG      The client started processes for sending and receiving messages
+2023-07-03 17:14:28,296 CRITICAL   error sending response from server
