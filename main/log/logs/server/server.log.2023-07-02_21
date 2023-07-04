@@ -1,0 +1,71 @@
+2023-06-30 00:26:46,987 INFO       connection server with ('127.0.0.1', 59290)
+2023-06-30 00:26:46,989 DEBUG      A function get_msg was called with parameters (<socket.socket fd=14, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59290)>,), {} from the function main_loop
+2023-06-30 00:26:46,991 DEBUG      parsig message from client {'action': 'presence', 'time': 1688074006.9809737, 'user': {'account_name': 'jhkhlklk'}}
+2023-06-30 00:26:46,992 DEBUG      A function send_msg was called with parameters (<socket.socket fd=14, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59290)>, {'response': 200}), {} from the function handler_client_msg
+2023-06-30 00:26:48,497 INFO       client ('127.0.0.1', 59290) disconnected from the server
+2023-06-30 00:31:48,995 INFO       connection server with ('127.0.0.1', 60360)
+2023-06-30 00:31:49,498 DEBUG      A function get_msg was called with parameters (<socket.socket fd=15, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 60360)>,), {} from the function main_loop
+2023-06-30 00:31:49,499 DEBUG      parsig message from client {'action': 'presence', 'time': 1688074308.995465, 'user': {'account_name': 'hjkhkjh'}}
+2023-06-30 00:31:49,500 DEBUG      A function send_msg was called with parameters (<socket.socket fd=15, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 60360)>, {'response': 200}), {} from the function handler_client_msg
+2023-06-30 00:31:51,002 INFO       client ('127.0.0.1', 60360) disconnected from the server
+2023-06-30 00:33:58,990 INFO       connection server with ('127.0.0.1', 40050)
+2023-06-30 00:33:59,493 DEBUG      A function get_msg was called with parameters (<socket.socket fd=16, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 40050)>,), {} from the function main_loop
+2023-06-30 00:33:59,493 DEBUG      parsig message from client {'action': 'presence', 'time': 1688074438.9915884, 'user': {'account_name': 'jhkjhk\\'}}
+2023-06-30 00:33:59,494 DEBUG      A function send_msg was called with parameters (<socket.socket fd=16, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 40050)>, {'response': 200}), {} from the function handler_client_msg
+2023-06-30 00:34:01,009 INFO       client ('127.0.0.1', 40050) disconnected from the server
+2023-06-30 00:35:54,400 INFO       connection server with ('127.0.0.1', 33502)
+2023-06-30 00:35:54,401 DEBUG      A function get_msg was called with parameters (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 33502)>,), {} from the function main_loop
+2023-06-30 00:35:54,401 DEBUG      parsig message from client {'action': 'presence', 'time': 1688074554.3950887, 'user': {'account_name': 'jkbkjkjlknk'}}
+2023-06-30 00:35:54,404 DEBUG      A function send_msg was called with parameters (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 33502)>, {'response': 200}), {} from the function handler_client_msg
+2023-06-30 00:36:09,019 DEBUG      A function get_msg was called with parameters (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 33502)>,), {} from the function main_loop
+2023-06-30 00:36:09,020 DEBUG      parsig message from client {'action': 'exit', 'time': 1688074568.7642963, 'account_name': 'jkbkjkjlknk'}
+2023-06-30 00:36:35,532 INFO       connection server with ('127.0.0.1', 57058)
+2023-06-30 00:36:36,034 DEBUG      A function get_msg was called with parameters (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57058)>,), {} from the function main_loop
+2023-06-30 00:36:36,034 DEBUG      parsig message from client {'action': 'presence', 'time': 1688074595.5325596, 'user': {'account_name': 'user_1'}}
+2023-06-30 00:36:36,035 DEBUG      A function send_msg was called with parameters (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57058)>, {'response': 400, 'error': 'Name already in use'}), {} from the function handler_client_msg
+2023-06-30 00:37:08,528 INFO       connection server with ('127.0.0.1', 46430)
+2023-06-30 00:37:09,033 DEBUG      A function get_msg was called with parameters (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 46430)>,), {} from the function main_loop
+2023-06-30 00:37:09,033 DEBUG      parsig message from client {'action': 'presence', 'time': 1688074628.5306818, 'user': {'account_name': 'user_7'}}
+2023-06-30 00:37:09,034 DEBUG      A function send_msg was called with parameters (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 46430)>, {'response': 200}), {} from the function handler_client_msg
+2023-06-30 00:38:03,063 INFO       connection server with ('127.0.0.1', 47050)
+2023-06-30 00:38:03,567 DEBUG      A function get_msg was called with parameters (<socket.socket fd=18, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 47050)>,), {} from the function main_loop
+2023-06-30 00:38:03,567 DEBUG      parsig message from client {'action': 'presence', 'time': 1688074683.0644808, 'user': {'account_name': 'user_10'}}
+2023-06-30 00:38:03,568 DEBUG      A function send_msg was called with parameters (<socket.socket fd=18, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 47050)>, {'response': 200}), {} from the function handler_client_msg
+2023-06-30 00:38:31,250 DEBUG      A function get_msg was called with parameters (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 46430)>,), {} from the function main_loop
+2023-06-30 00:38:31,251 DEBUG      parsig message from client {'action': 'message', 'from': 'user_7', 'to': 'user_10', 'time': 1688074711.0320847, 'msg_text': 'Hi'}
+2023-06-30 00:38:31,253 DEBUG      A function send_msg was called with parameters (<socket.socket fd=18, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 47050)>, {'action': 'message', 'from': 'user_7', 'to': 'user_10', 'time': 1688074711.0320847, 'msg_text': 'Hi'}), {} from the function proc_msg_to_client
+2023-06-30 00:38:31,253 INFO       message sent to user user_10 from user user_7
+2023-06-30 00:38:50,451 DEBUG      A function get_msg was called with parameters (<socket.socket fd=18, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 47050)>,), {} from the function main_loop
+2023-06-30 00:38:50,451 DEBUG      parsig message from client {'action': 'message', 'from': 'user_10', 'to': 'user_7', 'time': 1688074730.4348516, 'msg_text': 'Hello'}
+2023-06-30 00:38:50,452 DEBUG      A function send_msg was called with parameters (<socket.socket fd=17, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 46430)>, {'action': 'message', 'from': 'user_10', 'to': 'user_7', 'time': 1688074730.4348516, 'msg_text': 'Hello'}), {} from the function proc_msg_to_client
+2023-06-30 00:38:50,453 INFO       message sent to user user_7 from user user_10
+2023-06-30 00:39:16,647 INFO       client ('127.0.0.1', 46430) disconnected from the server
+2023-06-30 00:39:27,224 INFO       client ('127.0.0.1', 47050) disconnected from the server
+2023-06-30 00:46:48,104 INFO       connection server with ('127.0.0.1', 60204)
+2023-06-30 00:46:48,606 DEBUG      A function get_msg was called with parameters (<socket.socket fd=19, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 60204)>,), {} from the function main_loop
+2023-06-30 00:46:48,607 DEBUG      parsig message from client {'action': 'presence', 'time': 1688075208.1061883, 'user': {'account_name': 'jkhkjhj'}}
+2023-06-30 00:46:48,614 DEBUG      A function send_msg was called with parameters (<socket.socket fd=19, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 60204)>, {'response': 200}), {} from the function handler_client_msg
+2023-06-30 00:48:01,252 INFO       client ('127.0.0.1', 60204) disconnected from the server
+2023-06-30 00:49:41,335 INFO       connection server with ('127.0.0.1', 56596)
+2023-06-30 00:49:41,837 DEBUG      A function get_msg was called with parameters (<socket.socket fd=20, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 56596)>,), {} from the function main_loop
+2023-06-30 00:49:41,838 DEBUG      parsig message from client {'action': 'presence', 'time': 1688075381.3363802, 'user': {'account_name': 'user'}}
+2023-06-30 00:49:41,839 DEBUG      A function send_msg was called with parameters (<socket.socket fd=20, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 56596)>, {'response': 200}), {} from the function handler_client_msg
+2023-06-30 00:50:20,067 INFO       client ('127.0.0.1', 56596) disconnected from the server
+2023-06-30 00:56:23,787 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-06-30 00:56:23,788 INFO       trying to start socket from on the server
+2023-06-30 00:57:00,373 INFO       connection server with ('127.0.0.1', 43470)
+2023-06-30 00:57:00,386 INFO       connection server with ('127.0.0.1', 43476)
+2023-06-30 00:57:00,387 DEBUG      A function get_msg was called with parameters (<socket.socket fd=22, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 43470)>,), {} from the function main_loop
+2023-06-30 00:57:00,388 DEBUG      parsig message from client {'action': 'presence', 'time': 1688075820.3739939, 'user': {'account_name': 'test_1'}}
+2023-06-30 00:57:00,389 DEBUG      A function send_msg was called with parameters (<socket.socket fd=22, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 43470)>, {'response': 200}), {} from the function handler_client_msg
+2023-06-30 00:57:00,890 DEBUG      A function get_msg was called with parameters (<socket.socket fd=23, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 43476)>,), {} from the function main_loop
+2023-06-30 00:57:00,891 DEBUG      parsig message from client {'action': 'presence', 'time': 1688075820.3905613, 'user': {'account_name': 'test_0'}}
+2023-06-30 00:57:00,892 DEBUG      A function send_msg was called with parameters (<socket.socket fd=23, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 43476)>, {'response': 200}), {} from the function handler_client_msg
+2023-06-30 00:57:40,119 DEBUG      A function get_msg was called with parameters (<socket.socket fd=23, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 43476)>,), {} from the function main_loop
+2023-06-30 00:57:40,119 DEBUG      parsig message from client {'action': 'message', 'from': 'test_0', 'to': 'test_1', 'time': 1688075860.0675683, 'msg_text': 'hi'}
+2023-06-30 00:57:40,120 DEBUG      A function send_msg was called with parameters (<socket.socket fd=22, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 43470)>, {'action': 'message', 'from': 'test_0', 'to': 'test_1', 'time': 1688075860.0675683, 'msg_text': 'hi'}), {} from the function proc_msg_to_client
+2023-06-30 00:57:40,127 INFO       message sent to user test_1 from user test_0
+2023-06-30 00:57:55,202 DEBUG      A function get_msg was called with parameters (<socket.socket fd=23, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 43476)>,), {} from the function main_loop
+2023-06-30 00:57:55,203 DEBUG      parsig message from client {'action': 'exit', 'time': 1688075875.1991007, 'account_name': 'test_0'}
+2023-06-30 00:58:01,737 DEBUG      A function get_msg was called with parameters (<socket.socket fd=22, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 43470)>,), {} from the function main_loop
+2023-06-30 00:58:01,738 DEBUG      parsig message from client {'action': 'exit', 'time': 1688075881.378576, 'account_name': 'test_1'}
