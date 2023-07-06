@@ -183,3 +183,221 @@
 2023-07-03 17:12:04,135 INFO       sending message 200 : OK from server to client
 2023-07-03 17:12:04,137 DEBUG      The client started processes for sending and receiving messages
 2023-07-03 17:14:28,296 CRITICAL   error sending response from server
+2023-07-06 08:40:27,218 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 08:40:27,255 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_1
+2023-07-06 08:40:27,256 CRITICAL   Не удалось подключиться к серверу 127.0.0.1:7777, конечный компьютер отверг запрос на подключение.
+2023-07-06 08:40:27,463 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 08:40:27,463 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_0
+2023-07-06 08:40:27,479 CRITICAL   Не удалось подключиться к серверу 127.0.0.1:7777, конечный компьютер отверг запрос на подключение.
+2023-07-06 08:42:52,497 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 08:43:04,931 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_5
+2023-07-06 08:43:04,933 DEBUG      Сформировано "presence" сообщение для пользователя test_5
+2023-07-06 08:43:04,938 DEBUG      A function create_presence was called with parameters ('test_5',), {} from the function main
+2023-07-06 08:43:04,942 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49266), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688622184.9330962, 'user': {'account_name': 'test_5'}}), {} from the function main
+2023-07-06 08:43:05,563 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49266), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-07-06 08:43:05,564 DEBUG      Разбор приветственного сообщения от сервера: {'response': 200}
+2023-07-06 08:43:05,564 DEBUG      A function process_response_ans was called with parameters ({'response': 200},), {} from the function main
+2023-07-06 08:43:05,564 INFO       Установлено соединение с сервером. Ответ сервера: 200 : OK
+2023-07-06 08:43:05,827 DEBUG      Запрос списка известных пользователей test_5
+2023-07-06 08:43:05,828 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49266), raddr=('127.0.0.1', 7777)>, {'action': 'get_users', 'time': 1688622185.8278112, 'account)name': 'test_5'}), {} from the function user_list_request
+2023-07-06 08:43:06,096 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49266), raddr=('127.0.0.1', 7777)>,), {} from the function user_list_request
+2023-07-06 08:43:06,097 ERROR      Ошибка запроса списка известных пользователей.
+2023-07-06 08:43:06,097 DEBUG      Запрос контакт листа для пользователся test_5
+2023-07-06 08:43:06,097 DEBUG      Сформирован запрос {'action': 'get_contacts', 'time': 1688622186.097469, 'user': 'test_5'}
+2023-07-06 08:43:06,098 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49266), raddr=('127.0.0.1', 7777)>, {'action': 'get_contacts', 'time': 1688622186.097469, 'user': 'test_5'}), {} from the function contacts_list_request
+2023-07-06 08:43:07,099 ERROR      Ошибка запроса списка контактов.
+2023-07-06 08:43:07,107 DEBUG      Запущены процессы
+2023-07-06 08:43:56,330 CRITICAL   Потеряно соединение с сервером.
+2023-07-06 08:56:10,393 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 08:56:19,552 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_2
+2023-07-06 08:56:19,553 DEBUG      Сформировано "presence" сообщение для пользователя test_2
+2023-07-06 08:56:19,553 DEBUG      A function create_presence was called with parameters ('test_2',), {} from the function main
+2023-07-06 08:56:19,559 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53814), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688622979.5531807, 'user': {'account_name': 'test_2'}}), {} from the function main
+2023-07-06 08:56:19,629 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53814), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-07-06 08:56:19,630 DEBUG      Разбор приветственного сообщения от сервера: {'response': 200}
+2023-07-06 08:56:19,630 DEBUG      A function process_response_ans was called with parameters ({'response': 200},), {} from the function main
+2023-07-06 08:56:19,631 INFO       Установлено соединение с сервером. Ответ сервера: 200 : OK
+2023-07-06 08:56:19,925 DEBUG      Запрос списка известных пользователей test_2
+2023-07-06 08:56:19,926 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53814), raddr=('127.0.0.1', 7777)>, {'action': 'get_users', 'time': 1688622979.925498, 'account)name': 'test_2'}), {} from the function user_list_request
+2023-07-06 08:56:20,137 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53814), raddr=('127.0.0.1', 7777)>,), {} from the function user_list_request
+2023-07-06 08:56:20,137 ERROR      Ошибка запроса списка известных пользователей.
+2023-07-06 08:56:20,138 DEBUG      Запрос контакт листа для пользователся test_2
+2023-07-06 08:56:20,138 DEBUG      Сформирован запрос {'action': 'get_contacts', 'time': 1688622980.138178, 'user': 'test_2'}
+2023-07-06 08:56:20,139 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53814), raddr=('127.0.0.1', 7777)>, {'action': 'get_contacts', 'time': 1688622980.138178, 'user': 'test_2'}), {} from the function contacts_list_request
+2023-07-06 08:56:21,143 ERROR      Ошибка запроса списка контактов.
+2023-07-06 08:56:21,146 DEBUG      Запущены процессы
+2023-07-06 08:57:01,411 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 08:57:06,486 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_9
+2023-07-06 08:57:06,487 DEBUG      Сформировано "presence" сообщение для пользователя test_9
+2023-07-06 08:57:06,488 DEBUG      A function create_presence was called with parameters ('test_9',), {} from the function main
+2023-07-06 08:57:06,491 CRITICAL   Потеряно соединение с сервером.
+2023-07-06 08:57:06,493 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 44598), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688623026.4875066, 'user': {'account_name': 'test_9'}}), {} from the function main
+2023-07-06 08:57:07,027 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 44598), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-07-06 08:57:07,028 DEBUG      Разбор приветственного сообщения от сервера: {'response': 200}
+2023-07-06 08:57:07,028 DEBUG      A function process_response_ans was called with parameters ({'response': 200},), {} from the function main
+2023-07-06 08:57:07,028 INFO       Установлено соединение с сервером. Ответ сервера: 200 : OK
+2023-07-06 08:57:07,189 DEBUG      Запрос списка известных пользователей test_9
+2023-07-06 08:57:07,191 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 44598), raddr=('127.0.0.1', 7777)>, {'action': 'get_users', 'time': 1688623027.1900396, 'account)name': 'test_9'}), {} from the function user_list_request
+2023-07-06 08:57:07,531 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 44598), raddr=('127.0.0.1', 7777)>,), {} from the function user_list_request
+2023-07-06 08:57:07,531 ERROR      Ошибка запроса списка известных пользователей.
+2023-07-06 08:57:07,532 DEBUG      Запрос контакт листа для пользователся test_9
+2023-07-06 08:57:07,532 DEBUG      Сформирован запрос {'action': 'get_contacts', 'time': 1688623027.532215, 'user': 'test_9'}
+2023-07-06 08:57:07,533 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 44598), raddr=('127.0.0.1', 7777)>, {'action': 'get_contacts', 'time': 1688623027.532215, 'user': 'test_9'}), {} from the function contacts_list_request
+2023-07-06 08:57:08,534 ERROR      Ошибка запроса списка контактов.
+2023-07-06 08:57:08,543 DEBUG      Запущены процессы
+2023-07-06 08:57:29,828 CRITICAL   Потеряно соединение с сервером.
+2023-07-06 09:04:43,064 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 09:04:56,948 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_2
+2023-07-06 09:04:56,949 DEBUG      Сформировано "presence" сообщение для пользователя test_2
+2023-07-06 09:04:56,949 DEBUG      A function create_presence was called with parameters ('test_2',), {} from the function main
+2023-07-06 09:04:56,951 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53004), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688623496.949174, 'user': {'account_name': 'test_2'}}), {} from the function main
+2023-07-06 09:04:57,485 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53004), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-07-06 09:04:57,485 DEBUG      Разбор приветственного сообщения от сервера: {'response': 200}
+2023-07-06 09:04:57,486 DEBUG      A function process_response_ans was called with parameters ({'response': 200},), {} from the function main
+2023-07-06 09:04:57,486 INFO       Установлено соединение с сервером. Ответ сервера: 200 : OK
+2023-07-06 09:04:57,556 DEBUG      Запрос списка известных пользователей test_2
+2023-07-06 09:04:57,558 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53004), raddr=('127.0.0.1', 7777)>, {'action': 'get_users', 'time': 1688623497.557799, 'account)name': 'test_2'}), {} from the function user_list_request
+2023-07-06 09:04:57,990 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53004), raddr=('127.0.0.1', 7777)>,), {} from the function user_list_request
+2023-07-06 09:04:57,991 ERROR      Ошибка запроса списка известных пользователей.
+2023-07-06 09:04:57,991 DEBUG      Запрос контакт листа для пользователся test_2
+2023-07-06 09:04:57,991 DEBUG      Сформирован запрос {'action': 'get_contacts', 'time': 1688623497.9915307, 'user': 'test_2'}
+2023-07-06 09:04:57,993 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53004), raddr=('127.0.0.1', 7777)>, {'action': 'get_contacts', 'time': 1688623497.9915307, 'user': 'test_2'}), {} from the function contacts_list_request
+2023-07-06 09:04:58,994 ERROR      Ошибка запроса списка контактов.
+2023-07-06 09:04:58,995 DEBUG      Запущены процессы
+2023-07-06 09:05:23,245 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 09:05:30,788 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_5
+2023-07-06 09:05:30,789 DEBUG      Сформировано "presence" сообщение для пользователя test_5
+2023-07-06 09:05:30,790 DEBUG      A function create_presence was called with parameters ('test_5',), {} from the function main
+2023-07-06 09:05:30,791 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53064), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688623530.7895007, 'user': {'account_name': 'test_5'}}), {} from the function main
+2023-07-06 09:05:30,794 CRITICAL   Потеряно соединение с сервером.
+2023-07-06 09:05:30,827 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53064), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-07-06 09:05:30,828 DEBUG      Разбор приветственного сообщения от сервера: {'response': 200}
+2023-07-06 09:05:30,828 DEBUG      A function process_response_ans was called with parameters ({'response': 200},), {} from the function main
+2023-07-06 09:05:30,828 INFO       Установлено соединение с сервером. Ответ сервера: 200 : OK
+2023-07-06 09:05:30,927 DEBUG      Запрос списка известных пользователей test_5
+2023-07-06 09:05:30,929 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53064), raddr=('127.0.0.1', 7777)>, {'action': 'get_users', 'time': 1688623530.9283514, 'account)name': 'test_5'}), {} from the function user_list_request
+2023-07-06 09:05:31,340 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53064), raddr=('127.0.0.1', 7777)>,), {} from the function user_list_request
+2023-07-06 09:05:31,340 ERROR      Ошибка запроса списка известных пользователей.
+2023-07-06 09:05:31,341 DEBUG      Запрос контакт листа для пользователся test_5
+2023-07-06 09:05:31,341 DEBUG      Сформирован запрос {'action': 'get_contacts', 'time': 1688623531.3411398, 'user': 'test_5'}
+2023-07-06 09:05:31,344 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53064), raddr=('127.0.0.1', 7777)>, {'action': 'get_contacts', 'time': 1688623531.3411398, 'user': 'test_5'}), {} from the function contacts_list_request
+2023-07-06 09:05:32,344 ERROR      Ошибка запроса списка контактов.
+2023-07-06 09:05:32,346 DEBUG      Запущены процессы
+2023-07-06 09:06:37,528 CRITICAL   Потеряно соединение с сервером.
+2023-07-06 09:09:44,090 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 09:09:49,243 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_2
+2023-07-06 09:09:49,243 DEBUG      Сформировано "presence" сообщение для пользователя test_2
+2023-07-06 09:09:49,244 DEBUG      A function create_presence was called with parameters ('test_2',), {} from the function main
+2023-07-06 09:09:49,245 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 35512), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688623789.2436376, 'user': {'account_name': 'test_2'}}), {} from the function main
+2023-07-06 09:09:49,781 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 35512), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-07-06 09:09:49,781 DEBUG      Разбор приветственного сообщения от сервера: {'response': 200}
+2023-07-06 09:09:49,782 DEBUG      A function process_response_ans was called with parameters ({'response': 200},), {} from the function main
+2023-07-06 09:09:49,782 INFO       Установлено соединение с сервером. Ответ сервера: 200 : OK
+2023-07-06 09:09:49,888 DEBUG      Запрос списка известных пользователей test_2
+2023-07-06 09:09:49,890 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 35512), raddr=('127.0.0.1', 7777)>, {'action': 'get_users', 'time': 1688623789.8889027, 'account)name': 'test_2'}), {} from the function user_list_request
+2023-07-06 09:09:50,316 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 35512), raddr=('127.0.0.1', 7777)>,), {} from the function user_list_request
+2023-07-06 09:09:50,316 ERROR      Ошибка запроса списка известных пользователей.
+2023-07-06 09:09:50,317 DEBUG      Запрос контакт листа для пользователся test_2
+2023-07-06 09:09:50,317 DEBUG      Сформирован запрос {'action': 'get_contacts', 'time': 1688623790.3172996, 'user': 'test_2'}
+2023-07-06 09:09:50,318 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 35512), raddr=('127.0.0.1', 7777)>, {'action': 'get_contacts', 'time': 1688623790.3172996, 'user': 'test_2'}), {} from the function contacts_list_request
+2023-07-06 09:09:51,327 ERROR      Ошибка запроса списка контактов.
+2023-07-06 09:09:51,328 DEBUG      Запущены процессы
+2023-07-06 09:10:00,266 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 09:10:05,474 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_5
+2023-07-06 09:10:05,475 DEBUG      Сформировано "presence" сообщение для пользователя test_5
+2023-07-06 09:10:05,476 DEBUG      A function create_presence was called with parameters ('test_5',), {} from the function main
+2023-07-06 09:10:05,478 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 39258), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688623805.4749537, 'user': {'account_name': 'test_5'}}), {} from the function main
+2023-07-06 09:10:05,537 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 39258), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-07-06 09:10:05,538 DEBUG      Разбор приветственного сообщения от сервера: {'response': 200}
+2023-07-06 09:10:05,538 DEBUG      A function process_response_ans was called with parameters ({'response': 200},), {} from the function main
+2023-07-06 09:10:05,538 INFO       Установлено соединение с сервером. Ответ сервера: 200 : OK
+2023-07-06 09:10:05,597 DEBUG      Запрос списка известных пользователей test_5
+2023-07-06 09:10:05,598 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 39258), raddr=('127.0.0.1', 7777)>, {'action': 'get_users', 'time': 1688623805.598, 'account)name': 'test_5'}), {} from the function user_list_request
+2023-07-06 09:10:06,042 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 39258), raddr=('127.0.0.1', 7777)>,), {} from the function user_list_request
+2023-07-06 09:10:06,042 ERROR      Ошибка запроса списка известных пользователей.
+2023-07-06 09:10:06,042 DEBUG      Запрос контакт листа для пользователся test_5
+2023-07-06 09:10:06,042 DEBUG      Сформирован запрос {'action': 'get_contacts', 'time': 1688623806.0427165, 'user': 'test_5'}
+2023-07-06 09:10:06,043 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 39258), raddr=('127.0.0.1', 7777)>, {'action': 'get_contacts', 'time': 1688623806.0427165, 'user': 'test_5'}), {} from the function contacts_list_request
+2023-07-06 09:10:06,464 CRITICAL   Потеряно соединение с сервером.
+2023-07-06 09:10:07,044 ERROR      Ошибка запроса списка контактов.
+2023-07-06 09:10:07,045 DEBUG      Запущены процессы
+2023-07-06 09:10:34,894 ERROR      Попытка отправить сообщение незарегистрированому получателю: test_5
+2023-07-06 09:10:52,936 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 09:10:56,734 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_5
+2023-07-06 09:10:56,734 DEBUG      Сформировано "presence" сообщение для пользователя test_5
+2023-07-06 09:10:56,735 DEBUG      A function create_presence was called with parameters ('test_5',), {} from the function main
+2023-07-06 09:10:56,736 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 58814), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688623856.7349453, 'user': {'account_name': 'test_5'}}), {} from the function main
+2023-07-06 09:10:56,750 CRITICAL   Потеряно соединение с сервером.
+2023-07-06 09:10:56,788 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 58814), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-07-06 09:10:56,789 DEBUG      Разбор приветственного сообщения от сервера: {'response': 200}
+2023-07-06 09:10:56,789 DEBUG      A function process_response_ans was called with parameters ({'response': 200},), {} from the function main
+2023-07-06 09:10:56,789 INFO       Установлено соединение с сервером. Ответ сервера: 200 : OK
+2023-07-06 09:10:56,911 DEBUG      Запрос списка известных пользователей test_5
+2023-07-06 09:10:56,913 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 58814), raddr=('127.0.0.1', 7777)>, {'action': 'get_users', 'time': 1688623856.9123814, 'account)name': 'test_5'}), {} from the function user_list_request
+2023-07-06 09:10:57,292 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 58814), raddr=('127.0.0.1', 7777)>,), {} from the function user_list_request
+2023-07-06 09:10:57,292 ERROR      Ошибка запроса списка известных пользователей.
+2023-07-06 09:10:57,293 DEBUG      Запрос контакт листа для пользователся test_5
+2023-07-06 09:10:57,293 DEBUG      Сформирован запрос {'action': 'get_contacts', 'time': 1688623857.293373, 'user': 'test_5'}
+2023-07-06 09:10:57,294 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 58814), raddr=('127.0.0.1', 7777)>, {'action': 'get_contacts', 'time': 1688623857.293373, 'user': 'test_5'}), {} from the function contacts_list_request
+2023-07-06 09:10:58,295 ERROR      Ошибка запроса списка контактов.
+2023-07-06 09:10:58,296 DEBUG      Запущены процессы
+2023-07-06 09:11:31,963 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 09:12:06,636 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_2
+2023-07-06 09:12:06,636 DEBUG      Сформировано "presence" сообщение для пользователя test_2
+2023-07-06 09:12:06,639 DEBUG      A function create_presence was called with parameters ('test_2',), {} from the function main
+2023-07-06 09:12:06,642 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 47934), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688623926.6366293, 'user': {'account_name': 'test_2'}}), {} from the function main
+2023-07-06 09:12:06,750 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 47934), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-07-06 09:12:06,750 DEBUG      Разбор приветственного сообщения от сервера: {'response': 200}
+2023-07-06 09:12:06,751 DEBUG      A function process_response_ans was called with parameters ({'response': 200},), {} from the function main
+2023-07-06 09:12:06,751 INFO       Установлено соединение с сервером. Ответ сервера: 200 : OK
+2023-07-06 09:12:06,842 DEBUG      Запрос списка известных пользователей test_2
+2023-07-06 09:12:06,844 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 47934), raddr=('127.0.0.1', 7777)>, {'action': 'get_users', 'time': 1688623926.8432157, 'account)name': 'test_2'}), {} from the function user_list_request
+2023-07-06 09:12:07,253 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 47934), raddr=('127.0.0.1', 7777)>,), {} from the function user_list_request
+2023-07-06 09:12:07,253 ERROR      Ошибка запроса списка известных пользователей.
+2023-07-06 09:12:07,253 DEBUG      Запрос контакт листа для пользователся test_2
+2023-07-06 09:12:07,254 DEBUG      Сформирован запрос {'action': 'get_contacts', 'time': 1688623927.2541325, 'user': 'test_2'}
+2023-07-06 09:12:07,255 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 47934), raddr=('127.0.0.1', 7777)>, {'action': 'get_contacts', 'time': 1688623927.2541325, 'user': 'test_2'}), {} from the function contacts_list_request
+2023-07-06 09:12:07,575 CRITICAL   Потеряно соединение с сервером.
+2023-07-06 09:12:08,256 ERROR      Ошибка запроса списка контактов.
+2023-07-06 09:12:08,257 DEBUG      Запущены процессы
+2023-07-06 09:12:36,373 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 47934), raddr=('127.0.0.1', 7777)>, {'action': 'exit', 'time': 1688623956.3709004, 'account_name': 'test_2'}), {} from the function run
+2023-07-06 09:12:36,377 INFO       Завершение работы по команде пользователя.
+2023-07-06 09:13:40,708 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 09:13:40,718 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_1
+2023-07-06 09:13:40,720 DEBUG      Сформировано "presence" сообщение для пользователя test_1
+2023-07-06 09:13:40,720 DEBUG      A function create_presence was called with parameters ('test_1',), {} from the function main
+2023-07-06 09:13:40,722 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52224), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688624020.7198389, 'user': {'account_name': 'test_1'}}), {} from the function main
+2023-07-06 09:13:40,879 DEBUG      A function arg_parser was called with parameters (), {} from the function main
+2023-07-06 09:13:40,880 INFO       Запущен клиент с парамертами: адрес сервера: 127.0.0.1 , порт: 7777, имя пользователя: test_0
+2023-07-06 09:13:40,890 DEBUG      Сформировано "presence" сообщение для пользователя test_0
+2023-07-06 09:13:40,891 DEBUG      A function create_presence was called with parameters ('test_0',), {} from the function main
+2023-07-06 09:13:40,892 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52228), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1688624020.890279, 'user': {'account_name': 'test_0'}}), {} from the function main
+2023-07-06 09:13:41,038 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52224), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-07-06 09:13:41,039 DEBUG      Разбор приветственного сообщения от сервера: {'response': 200}
+2023-07-06 09:13:41,039 DEBUG      A function process_response_ans was called with parameters ({'response': 200},), {} from the function main
+2023-07-06 09:13:41,040 INFO       Установлено соединение с сервером. Ответ сервера: 200 : OK
+2023-07-06 09:13:41,156 DEBUG      Запрос списка известных пользователей test_1
+2023-07-06 09:13:41,158 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52224), raddr=('127.0.0.1', 7777)>, {'action': 'get_users', 'time': 1688624021.1569161, 'account)name': 'test_1'}), {} from the function user_list_request
+2023-07-06 09:13:41,540 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52224), raddr=('127.0.0.1', 7777)>,), {} from the function user_list_request
+2023-07-06 09:13:41,541 ERROR      Ошибка запроса списка известных пользователей.
+2023-07-06 09:13:41,541 DEBUG      Запрос контакт листа для пользователся test_1
+2023-07-06 09:13:41,542 DEBUG      Сформирован запрос {'action': 'get_contacts', 'time': 1688624021.542051, 'user': 'test_1'}
+2023-07-06 09:13:41,543 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52224), raddr=('127.0.0.1', 7777)>, {'action': 'get_contacts', 'time': 1688624021.542051, 'user': 'test_1'}), {} from the function contacts_list_request
+2023-07-06 09:13:41,656 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52228), raddr=('127.0.0.1', 7777)>,), {} from the function main
+2023-07-06 09:13:41,656 DEBUG      Разбор приветственного сообщения от сервера: {'response': 200}
+2023-07-06 09:13:41,657 DEBUG      A function process_response_ans was called with parameters ({'response': 200},), {} from the function main
+2023-07-06 09:13:41,657 INFO       Установлено соединение с сервером. Ответ сервера: 200 : OK
+2023-07-06 09:13:42,097 DEBUG      Запрос списка известных пользователей test_0
+2023-07-06 09:13:42,098 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52228), raddr=('127.0.0.1', 7777)>, {'action': 'get_users', 'time': 1688624022.0977588, 'account)name': 'test_0'}), {} from the function user_list_request
+2023-07-06 09:13:42,210 DEBUG      A function get_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52228), raddr=('127.0.0.1', 7777)>,), {} from the function user_list_request
+2023-07-06 09:13:42,211 ERROR      Ошибка запроса списка известных пользователей.
+2023-07-06 09:13:42,211 DEBUG      Запрос контакт листа для пользователся test_0
+2023-07-06 09:13:42,211 DEBUG      Сформирован запрос {'action': 'get_contacts', 'time': 1688624022.2115102, 'user': 'test_0'}
+2023-07-06 09:13:42,212 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52228), raddr=('127.0.0.1', 7777)>, {'action': 'get_contacts', 'time': 1688624022.2115102, 'user': 'test_0'}), {} from the function contacts_list_request
+2023-07-06 09:13:42,544 ERROR      Ошибка запроса списка контактов.
+2023-07-06 09:13:42,550 DEBUG      Запущены процессы
+2023-07-06 09:13:43,214 ERROR      Ошибка запроса списка контактов.
+2023-07-06 09:13:43,224 DEBUG      Запущены процессы
+2023-07-06 09:13:43,557 CRITICAL   Потеряно соединение с сервером.
+2023-07-06 09:14:47,422 DEBUG      A function send_msg was called with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52228), raddr=('127.0.0.1', 7777)>, {'action': 'exit', 'time': 1688624087.420562, 'account_name': 'test_0'}), {} from the function run
+2023-07-06 09:14:47,425 INFO       Завершение работы по команде пользователя.
