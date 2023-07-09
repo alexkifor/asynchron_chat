@@ -1,9 +1,11 @@
 import socket
 import select
 import sys
+import os
 import argparse
 import time
 import threading
+import configparser
 sys.path.append('../')
 from main.utils import send_msg, get_msg
 from main.variables import *
@@ -13,20 +15,26 @@ from decos import log
 from discripts import Port, Addr
 from metaclasses import ServerVerifier
 from server_db import ServerPool
+from PyQt5.QtWidgets import QApplication, QMessageBox
+from PyQt5.QtCore import QTimer
+from server_gui import MainWindow, gui_create_model, HistoryWindow, create_stat_model, ConfigWindow
+# from PyQt5.QtGui import QStandardItemModel, QStandardItemv
 
 
 SERV_LOG = logging.getLogger('server')
 
-@log
-def arg_parser():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-a', default = '', nargs='?') 
-    parser.add_argument('-p', default= DEFAULT_PORT, type=int, nargs='?')
-    name_space = parser.parse_args(sys.argv[1:])
-    serv_addr = name_space.a
-    serv_port = name_space.p
-    return serv_addr, serv_port
+new_connection = False
+conflag_lock = threading.Lock()
 
+@log
+def arg_parser(default_port, default_address):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-p', default=default_port, type=int, nargs='?')
+    parser.add_argument('-a', default=default_address, nargs='?')
+    namespace = parser.parse_args(sys.argv[1:])
+    listen_address = namespace.a
+    listen_port = namespace.p
+    return listen_address, listen_port
 
 class Server(threading.Thread, metaclass=ServerVerifier):
     port = Port()
@@ -77,6 +85,11 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                         self.handler_client_msg(get_msg(client), client)
                     except:
                         SERV_LOG.info(f"client {client.getpeername()} disconnected from the server")
+                        for name in self.names:
+                            if self.names[name] == client:
+                                self.database.user_logout(name)
+                                del self.names[name]
+                                break
                         self.clients.remove(client)
             for msg in self.messages:
                 try:
@@ -84,6 +97,7 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                 except:
                     SERV_LOG.info(f"Connection with user {msg['to']} was lost")
                     self.clients.remove(self.names[msg['to']])
+                    self.database.user_logout(msg['to'])
                     del self.names[msg['to']]
             self.messages.clear()
 
@@ -92,7 +106,7 @@ class Server(threading.Thread, metaclass=ServerVerifier):
         if msg['to'] in self.names and self.names[msg['to']] in cli_sock:
             send_msg(self.names[msg['to']], msg)
             SERV_LOG.info(f"message sent to user {msg['to']} from user {msg['from']}")
-        elif msg['to'] in self.names and self.names[msg['from']] not in cli_sock:
+        elif msg['to'] in self.names and self.names[msg['to']] not in cli_sock:
             raise ConnectionError
         else:
             SERV_LOG.error(f"user {msg['to']} not register on the server, sending message is not imposible")
@@ -104,6 +118,7 @@ class Server(threading.Thread, metaclass=ServerVerifier):
         :param data:
         :return:
         '''
+        global new_connection
         SERV_LOG.debug(f'parsig message from client {data}')
         if 'action' in data and data['action'] == 'presence' and 'time' in data \
             and 'user' in data:
@@ -112,6 +127,8 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                     client_ip, client_port = client.getpeername()
                     self.database.user_login(data['user']['account_name'], client_ip, client_port)
                     send_msg(client, {'response': 200})
+                    with conflag_lock:
+                        new_connection = True
                 else:
                     send_msg(client, {
                         'response': 400,
@@ -121,67 +138,135 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                     client.close()
                 return
         elif 'action' in data and data['action'] == 'message' and 'to' in data and 'time' in data \
-            and 'from' in data and 'msg_text' in data:
+            and 'from' in data and 'msg_text' in data and self.names[data['from'] == client]:
             self.messages.append(data)
+            self.database.process_message(data['from'], data['to'])
             return
-        elif 'action' in data and data['action'] == 'exit' and 'account_name' in data:
+        elif 'action' in data and data['action'] == 'exit' and 'account_name' in data and \
+            self.names[data['account_name']] == client:
             self.database.user_logout(data['account_name'])
+            SERV_LOG.info(f"User {data['account_name']} correctly disconnected from the server")
             self.clients.remove(self.names[data['account_name']])
             self.names[data['account_name']].close()
             del self.names[data['account_name']]
+            with conflag_lock:
+                new_connection = True
             return
+        elif 'action' in data and data['action'] == 'get_contacts' and 'user' in data and \
+            self.names[data['user']] == client:
+            response = {'response': 202,
+                        'data_list': self.database.get_contacts(data['user'])}
+            send_msg(client, response)
+        elif 'action' in data and data['action'] == 'add' and 'account_name' in data and 'user' in data \
+            and self.names[data['user']] == client:
+            self.database.add_contact(data['user'], data['account_name'])
+            send_msg(client, {'response': 200})
+        elif 'action' in data and data['action'] == 'remove' and 'account_name' in data and 'user' in data \
+            and self.names[data['user']] == client:
+            self.database.remove_contact(data['user'], data['account_name'])
+            send_msg(client, {'response': 200})
+        elif 'action' in data and data['action'] == 'get_users' and 'account_name' in data \
+            and self.names[data['account_name']] == client:
+            response = {'response': 202,
+                        'data_list': [user[0] for user in self.database.users_list()]}
+            send_msg(client, response)
         else:
             send_msg(client, {
                 'response': 400,
                 'error': 'Incorrect response'
             })
             return 
-
-def print_help():
-    print('Commands: ')
-    print('users - list all users')
-    print('connected - list all active users')
-    print('loghist - login history user')
-    print('exit - shutdown server')
-    print('help - command helper')       
-
-
+ 
 def main():
-    '''
-    Функция загружает параметры из командной строки, 
-    если параметров нет задает параметры по умолчанию . Создает сокет
-    и прослушивает указанный адрес.
-    '''
-    serv_addr, serv_port = arg_parser()
-    database = ServerPool()
-    server = Server(serv_addr, serv_port, database)
+    config = configparser.ConfigParser()
+
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    config.read(f"{dir_path}/{'server.ini'}")
+
+
+    listen_address, listen_port = arg_parser(
+        config['SETTINGS']['Default_port'], config['SETTINGS']['Listen_Address'])
+
+ 
+    database = ServerPool(
+        os.path.join(
+            config['SETTINGS']['Database_path'],
+            config['SETTINGS']['Database_file']))
+
+   
+    server = Server(listen_address, listen_port, database)
     server.daemon = True
     server.start()
-    print_help()
-    while True:
-        cmd = input('enter command: ')
-        if cmd == 'help':
-            print_help()
-        elif cmd == 'exit':
-            break
-        elif cmd == 'users':
-            for user in sorted(database.users_list()):
-                print(f"user {user[0]}, last login {user[1]}")
-        elif cmd == 'connected':
-            for user in sorted(database.active_users_list()):
-                print(f"user {user[0]}, connected: {user[1]}:{user[2]}, connected time: {user[3]}")
-        elif cmd == 'loghist':
-            name = input('enter user name to look his login history or press "Enter" to lokk all history: ')
-            for user in sorted(database.login_history(name)):
-                print(f"user: {user[0]}, login time: {user[1]}. Enter with: {user[2]:{user[3]}}")
-        else:
-            print('Enter bad command')
-
+    server_app = QApplication(sys.argv)
+    main_window = MainWindow()
+    main_window.statusBar().showMessage('Server Working')
+    main_window.active_clients_table.setModel(gui_create_model(database))
+    main_window.active_clients_table.resizeColumnsToContents()
+    main_window.active_clients_table.resizeRowsToContents()
 
     
+    def list_update():
+        global new_connection
+        if new_connection:
+            main_window.active_clients_table.setModel(
+                gui_create_model(database))
+            main_window.active_clients_table.resizeColumnsToContents()
+            main_window.active_clients_table.resizeRowsToContents()
+            with conflag_lock:
+                new_connection = False
+
+    
+    def show_statistics():
+        global stat_window
+        stat_window = HistoryWindow()
+        stat_window.history_table.setModel(create_stat_model(database))
+        stat_window.history_table.resizeColumnsToContents()
+        stat_window.history_table.resizeRowsToContents()
+        stat_window.show()
+
+
+    def server_config():
+        global config_window
+        config_window = ConfigWindow()
+        config_window.db_path.insert(config['SETTINGS']['Database_path'])
+        config_window.db_file.insert(config['SETTINGS']['Database_file'])
+        config_window.port.insert(config['SETTINGS']['Default_port'])
+        config_window.ip.insert(config['SETTINGS']['Listen_Address'])
+        config_window.save_btn.clicked.connect(save_server_config)
+
+    
+    def save_server_config():
+        global config_window
+        message = QMessageBox()
+        config['SETTINGS']['Database_path'] = config_window.db_path.text()
+        config['SETTINGS']['Database_file'] = config_window.db_file.text()
+        try:
+            port = int(config_window.port.text())
+        except ValueError:
+            message.warning(config_window, 'Ошибка', 'Порт должен быть числом')
+        else:
+            config['SETTINGS']['Listen_Address'] = config_window.ip.text()
+            if 1023 < port < 65536:
+                config['SETTINGS']['Default_port'] = str(port)
+                print(port)
+                with open('server.ini', 'w') as conf:
+                    config.write(conf)
+                    message.information(
+                        config_window, 'OK', 'Настройки успешно сохранены!')
+            else:
+                message.warning(
+                    config_window,
+                    'Ошибка',
+                    'Порт должен быть от 1024 до 65536')
+
+    timer = QTimer()
+    timer.timeout.connect(list_update)
+    timer.start(1000)
+    main_window.refresh_button.triggered.connect(list_update)
+    main_window.show_history_button.triggered.connect(show_statistics)
+    main_window.config_btn.triggered.connect(server_config)
+    server_app.exec_()
 
 
 if __name__ == '__main__':
-     main()
-
-
+    main()
