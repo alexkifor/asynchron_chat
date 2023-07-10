@@ -1,25 +1,17 @@
 import subprocess
 
-
-
-PROC = []
-
+process = []
 
 while True:
-    
-    ACTION = input('Choise command: q - exit, '
-                   's - run server and clients, '
-                   'x - close server and clients sessions: ')
-    if ACTION == 'q':
+    action = input('Выберите действие: q - выход , s - запустить сервер, k - запустить клиенты x - закрыть все окна:')
+    if action == 'q':
         break
-    elif ACTION == 's':
-        PROC.append(subprocess.Popen(f'gnome-terminal -e "python3 server.py"', shell=True, stdout=subprocess.PIPE))
-        n = int(input('Enter clients value: '))
-        for i in range(n):
-            p = subprocess.Popen(f'gnome-terminal -e "python3 client.py -n test_{i}"', shell=True, stdout=subprocess.PIPE)
-            PROC.append(p)           
-    elif ACTION == 'x':
-        while PROC:
-            proc_kill = PROC.pop()
-            proc_kill.kill()
-
+    elif action == 's':
+        process.append(subprocess.Popen('python server.py', creationflags=subprocess.CREATE_NEW_CONSOLE))
+    elif action == 'k':
+        clients_count = int(input('Введите количество тестовых клиентов для запуска: '))
+        for i in range(clients_count):
+            process.append(subprocess.Popen(f'python client.py -n test{i + 1}', creationflags=subprocess.CREATE_NEW_CONSOLE))
+    elif action == 'x':
+        while process:
+            process.pop().kill()
