@@ -1,0 +1,9 @@
+2023-07-09 22:56:06,122 DEBUG      A function arg_parser was called with parameters ('7777', ''), {} from the function main
+2023-07-09 22:56:06,270 INFO       trying to start socket from on the server
+2023-07-09 22:56:06,272 INFO       server socket waiting for connection on 7777 port with ip address: .If ip_address is not soecified, server waiting for connection on 7777 from any ip address
+2023-07-09 22:56:29,806 DEBUG      A function arg_parser was called with parameters ('7777', ''), {} from the function main
+2023-07-09 22:56:29,907 INFO       trying to start socket from on the server
+2023-07-09 22:56:29,922 INFO       server socket waiting for connection on 7777 port with ip address: .If ip_address is not soecified, server waiting for connection on 7777 from any ip address
+2023-07-09 23:41:46,104 DEBUG      A function arg_parser was called with parameters ('7777', ''), {} from the function main
+2023-07-09 23:41:46,481 INFO       trying to start socket from on the server
+2023-07-09 23:41:46,496 INFO       server socket waiting for connection on 7777 port with ip address: .If ip_address is not soecified, server waiting for connection on 7777 from any ip address

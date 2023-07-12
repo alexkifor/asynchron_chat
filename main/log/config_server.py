@@ -1,12 +1,11 @@
 import sys
 import os
-import logging
 from logging.handlers import TimedRotatingFileHandler
 sys.path.append('../')
-from variables import LOG_LEVEL
+from main.variables import *
 
 
-LOG =  logging.getLogger('server')
+LOG = logging.getLogger('server')
 PATH = os.path.dirname(os.path.abspath(__file__))
 PATH = os.path.join(PATH, 'logs/server/server.log')
 LOG_FILE = TimedRotatingFileHandler(PATH, encoding='utf-8', interval=1, when='H')

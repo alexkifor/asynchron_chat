@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine, Table, Column, Integer, String, MetaData, ForeignKey, DateTime
 from sqlalchemy.orm import mapper, sessionmaker
-from variables import *
 import datetime
 
 
@@ -43,7 +42,6 @@ class ServerPool:
 
 
     def __init__(self, path):
-        print(path)
         self.db_engine = create_engine(f'sqlite:///{path}', echo=False, pool_recycle=7200, connect_args={'check_same_thread': False})
         self.metadata = MetaData()
         users_table = Table('Users', self.metadata,
@@ -58,7 +56,7 @@ class ServerPool:
             Column('port', Integer),
             Column('login_time', DateTime)                           
         )
-        user_login_history = Table('login_history', self.metadata,
+        user_login_history = Table('Login_history', self.metadata,
             Column('id', Integer, primary_key=True),
             Column('name', ForeignKey('Users.id')),
             Column('date_time', DateTime),
@@ -116,6 +114,7 @@ class ServerPool:
         sender_row.sent += 1
         recipient_row = self.session.query(self.UsersHistory).filter_by(user=recipient).first()
         recipient_row.accepted += 1
+        self.session.commit()
 
     def add_contact(self, user, contact):
         user = self.session.query(self.AllUsers).filter_by(name=user).first()
@@ -131,8 +130,9 @@ class ServerPool:
         contact = self.session.query(self.AllUsers).filter_by(name=contact).first()
         if not contact:
             return
-        print(self.session.query(self.UsersContacts).filter(self.UsersContacts.user == user.id,
-                                                            self.UsersContacts.contact == contact.id).delete())
+        self.session.query(self.UsersContacts).filter(
+            self.UsersContacts.user == user.id,
+            self.UsersContacts.contact == contact.id).delete()
         self.session.commit()
 
 
@@ -163,9 +163,9 @@ class ServerPool:
             query = query.filter(self.AllUsers.name == user_name)
             return query.all()
         
-    def get_contact(self, user_name):
+    def get_contacts(self, user_name):
         user = self.session.query(self.AllUsers).filter_by(name=user_name).one()
-        query = self.session.query(self.UsersContacts, self.AllUsers.name).filter_by(user=user.id).join(self.AllUsers, \
+        query = self.session.query(self.UsersContacts, self.AllUsers.name).filter_by(user=user.id).join(self.AllUsers,\
         self.UsersContacts.contact == self.AllUsers.id)
         return [contact[1] for contact in query.all()]
 
