@@ -31,8 +31,10 @@ class ClientPool:
     def __init__(self, name):
         path = os.path.dirname(os.path.realpath(__file__))
         filename = f'client_{name}.db3'
-        self.database_engine = create_engine(f'sqlite:///{os.path.join(path, filename)}', echo=False, pool_recycle=7200,
-                                             connect_args={'check_same_thread': False})
+        self.database_engine = create_engine(
+            f'sqlite:///{os.path.join(path, filename)}',
+            echo=False, pool_recycle=7200,
+            connect_args={'check_same_thread': False})
 
         self.metadata = MetaData()
 
@@ -71,6 +73,9 @@ class ClientPool:
             contact_row = self.Contacts(contact)
             self.session.add(contact_row)
             self.session.commit()
+
+    def contacts_clear(self):
+        self.session.query(self.Contacts).delete()
 
 
     def del_contact(self, contact):

@@ -1,13 +1,15 @@
-from sqlalchemy import create_engine, Table, Column, Integer, String, MetaData, ForeignKey, DateTime
+from sqlalchemy import create_engine, Table, Column, Integer, String, MetaData, ForeignKey, DateTime, Text
 from sqlalchemy.orm import mapper, sessionmaker
 import datetime
 
 
 class ServerPool:
     class AllUsers:
-        def __init__(self, username):
+        def __init__(self, username, passwd_hash):
             self.name = username
             self.last_login = datetime.datetime.now()
+            self.passwd_hash = passwd_hash
+            self.pubkey = None
             self.id = None
 
     class ActiveUsers:
@@ -42,12 +44,17 @@ class ServerPool:
 
 
     def __init__(self, path):
-        self.db_engine = create_engine(f'sqlite:///{path}', echo=False, pool_recycle=7200, connect_args={'check_same_thread': False})
+        self.db_engine = create_engine(f'sqlite:///{path}',
+                                       echo=False,
+                                       pool_recycle=7200,
+                                       connect_args={'check_same_thread': False})
         self.metadata = MetaData()
         users_table = Table('Users', self.metadata,
             Column('id', Integer, primary_key=True),
             Column('name', String, unique=True),
-            Column('last_login', DateTime)
+            Column('last_login', DateTime),
+            Column('passwd_hash', String),
+            Column('pubkey', Text)
         )
         active_users_table = Table('Active_users', self.metadata,
             Column('id', Integer, primary_key=True),
@@ -68,7 +75,7 @@ class ServerPool:
             Column('user', ForeignKey('Users.id')),
             Column('contact', ForeignKey('Users.id'))
         )
-        users_hist_tbl = Table('History', self.metadata,
+        users_history_table = Table('History', self.metadata,
             Column('id', Integer, primary_key=True),
             Column('user', ForeignKey('Users.id')),
             Column('sent', Integer),
@@ -79,28 +86,57 @@ class ServerPool:
         mapper(self.ActiveUsers, active_users_table)
         mapper(self.LoginHistory, user_login_history)
         mapper(self.UsersContacts, contacts)
-        mapper(self.UsersHistory, users_hist_tbl)
+        mapper(self.UsersHistory, users_history_table)
         Session = sessionmaker(bind=self.db_engine)
         self.session = Session()
         self.session.query(self.ActiveUsers).delete()
         self.session.commit()
 
-    def user_login(self, username, ip_addr, port):
+    def user_login(self, username, ip_addr, port, key):
         result = self.session.query(self.AllUsers).filter_by(name=username)
         if result.count():
             user = result.first()
             user.last_login = datetime.datetime.now()
+            if user.pubkey != key:
+                user.pubkey = key
         else:
-            user = self.AllUsers(username)
-            self.session.add(user)
-            self.session.commit()
-            user_in_hist = self.UsersHistory(user.id)
-            self.session.add(user_in_hist)
+            raise ValueError('Пользователь не зарегистрирован')
         new_activ_user = self.ActiveUsers(user.id, ip_addr, port, datetime.datetime.now())
         self.session.add(new_activ_user)
         history = self.LoginHistory(user.id, datetime.datetime.now(), ip_addr, port)
         self.session.add(history)
         self.session.commit()
+
+    def add_user(self, name, passwd_hash):
+        user = self.AllUsers(name, passwd_hash)
+        self.session.add(user)
+        self.session.commit()
+        history_user = self.UsersHistory(user.id)
+        self.session.add(history_user)
+        self.session.commit()
+
+    def remove_user(self, name):
+        user = self.session.query(self.AllUsers).filter_by(name=name).first()
+        self.session.query(self.ActiveUsers).filter_by(user=user.id).delete()
+        self.session.query(self.LoginHistory).filter_by(name=user.id).delete()
+        self.session.query(self.UsersContacts).filter_by(user=user.id).delete()
+        self.session.query(self.UsersHistory).filter_by(user=user.id).delete()
+        self.session.query(self.AllUsers).filter_by(name=name).delete()
+        self.session.commit()
+
+    def get_hash(self, name):
+        user = self.session.query(self.AllUsers).filter_by(name=name).first()
+        return user.passwd_hash
+
+    def get_pubkey(self, name):
+        user = self.session.query(self.AllUsers).filter_by(name=name).first()
+        return user.pubkey
+
+    def check_user(self, name):
+        if self.session.query(self.AllUsers).filter_by(name=name).count():
+            return True
+        else:
+            return False
 
     def user_logout(self, user_name):
         user = self.session.query(self.AllUsers).filter_by(name=user_name).first()
@@ -169,7 +205,7 @@ class ServerPool:
         self.UsersContacts.contact == self.AllUsers.id)
         return [contact[1] for contact in query.all()]
 
-    def msg_history(self):
+    def message_history(self):
         query = self.session.query(
             self.AllUsers.name,
             self.AllUsers.last_login,
@@ -181,7 +217,7 @@ class ServerPool:
 
 
 if __name__ == '__main__':
-    test_db = ServerPool()
+    test_db = ServerPool('../server_db.db3')
     test_db.user_login('client_1', '192.168.1.1', 7777)
     test_db.user_login('client_2', '192.168.1.2', 8001)
     test_db.user_login('client_3', '192.168.1.2', 8002)
