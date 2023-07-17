@@ -3,7 +3,7 @@ import unittest
 import sys
 import os
 sys.path.append(os.path.join(os.getcwd(), '..'))
-from main.utils import send_msg, get_msg
+from main.common.utils import send_msg, get_msg
 
 
 

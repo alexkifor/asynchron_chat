@@ -1,18 +1,22 @@
 import argparse
 import configparser
+
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import Qt
+
 from server.server_gui import MainWindow
 from log.config_server import *
-from variables import *
+from common.variables import *
 from server.core import Server
-from decos import log
+from common.decos import log
 from server.server_db import ServerPool
 
 logger = logging.getLogger('server')
 
+
 @log
 def arg_parser(default_port, default_address):
+    '''Парсер аргументов коммандной строки.'''
     logger.debug(f'Запуск парсера аргументов командной строки: {sys.argv}')
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', default=default_port, type=int, nargs='?')
@@ -24,8 +28,8 @@ def arg_parser(default_port, default_address):
     return listen_address, listen_port
 
 
-
 def config_load():
+    '''Парсер конфигурационного ini файла.'''
     config = configparser.ConfigParser()
     dir_path = os.path.dirname(os.path.realpath(__file__))
     config.read(f"{dir_path}/{'server.ini'}")
@@ -41,9 +45,14 @@ def config_load():
 
 
 def main():
+    '''Основная функция'''
     config = config_load()
-    listen_address, listen_port = arg_parser(config['SETTINGS']['Default_port'], config['SETTINGS']['Listen_Address'])
-    database = ServerPool(os.path.join(config['SETTINGS']['Database_path'], config['SETTINGS']['Database_file']))
+    listen_address, listen_port = arg_parser(
+        config['SETTINGS']['Default_port'], config['SETTINGS']['Listen_Address'])
+    database = ServerPool(
+        os.path.join(
+            config['SETTINGS']['Database_path'],
+            config['SETTINGS']['Database_file']))
     server = Server(listen_address, listen_port, database)
     server.daemon = True
     server.start()

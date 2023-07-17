@@ -1,7 +1,8 @@
 import sys
 import hashlib
-import binascii
 import os
+
+import binascii
 from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QLabel, QTableView, QDialog, QPushButton, \
     QLineEdit, QFileDialog, QMessageBox, QComboBox
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
@@ -9,6 +10,7 @@ from PyQt5.QtCore import Qt, QTimer
 
 
 class StatWindow(QDialog):
+    '''Класс - окно со статистикой пользователей'''
     def __init__(self, database):
         super().__init__()
 
@@ -31,6 +33,7 @@ class StatWindow(QDialog):
         self.create_stat_model()
 
     def create_stat_model(self):
+        '''Метод реализующий заполнение таблицы статистикой сообщений.'''
         stat_list = self.database.message_history()
         list = QStandardItemModel()
         list.setHorizontalHeaderLabels(
@@ -52,7 +55,7 @@ class StatWindow(QDialog):
 
 
 class RegisterUser(QDialog):
-
+    '''Класс диалог регистрации пользователя на сервере.'''
     def __init__(self, database, server):
         super().__init__()
 
@@ -102,6 +105,7 @@ class RegisterUser(QDialog):
         self.show()
 
     def save_data(self):
+        '''Метод проверки правильности ввода и сохранения в базу нового пользователя.'''
         if not self.client_name.text():
             self.messages.critical(
                 self, 'Ошибка', 'Не указано имя пользователя.')
@@ -129,6 +133,7 @@ class RegisterUser(QDialog):
 
 
 class ConfigWindow(QDialog):
+    '''Класс окно настроек.'''
     def __init__(self, config):
         super().__init__()
         self.config = config
@@ -200,6 +205,7 @@ class ConfigWindow(QDialog):
         self.save_btn.clicked.connect(self.save_server_config)
 
     def open_file_dialog(self):
+        '''Метод обработчик открытия окна выбора папки.'''
         global dialog
         dialog = QFileDialog(self)
         path = dialog.getExistingDirectory()
@@ -208,6 +214,11 @@ class ConfigWindow(QDialog):
         self.db_path.insert(path)
 
     def save_server_config(self):
+        '''
+        Метод сохранения настроек.
+        Проверяет правильность введённых данных и
+        если всё правильно сохраняет ini файл.
+        '''
         global config_window
         message = QMessageBox()
         self.config['SETTINGS']['Database_path'] = self.db_path.text()
@@ -232,6 +243,7 @@ class ConfigWindow(QDialog):
 
 
 class DelUserDialog(QDialog):
+    '''Класс - диалог выбора контакта для удаления.'''
     def __init__(self, database, server):
         super().__init__()
         self.database = database
@@ -264,10 +276,12 @@ class DelUserDialog(QDialog):
         self.all_users_fill()
 
     def all_users_fill(self):
+        '''Метод заполняющий список пользователей.'''
         self.selector.addItems([item[0]
                                 for item in self.database.users_list()])
 
     def remove_user(self):
+        '''Метод - обработчик удаления пользователя.'''
         self.database.remove_user(self.selector.currentText())
         if self.selector.currentText() in self.server.names:
             sock = self.server.names[self.selector.currentText()]
@@ -278,6 +292,7 @@ class DelUserDialog(QDialog):
 
 
 class MainWindow(QMainWindow):
+    '''Класс - основное окно сервера.'''
     def __init__(self, database, server, config):
         super().__init__()
         self.database = database
@@ -324,9 +339,11 @@ class MainWindow(QMainWindow):
         self.show()
 
     def create_users_model(self):
+        '''Метод заполняющий таблицу активных пользователей.'''
         list_users = self.database.active_users_list()
         list = QStandardItemModel()
-        list.setHorizontalHeaderLabels(['Имя Клиента', 'IP Адрес', 'Порт', 'Время подключения'])
+        list.setHorizontalHeaderLabels(
+            ['Имя Клиента', 'IP Адрес', 'Порт', 'Время подключения'])
         for row in list_users:
             user, ip, port, time = row
             user = QStandardItem(user)
@@ -343,22 +360,24 @@ class MainWindow(QMainWindow):
         self.active_clients_table.resizeRowsToContents()
 
     def show_statistics(self):
+        '''Метод создающий окно со статистикой клиентов.'''
         global stat_window
         stat_window = StatWindow(self.database)
         stat_window.show()
 
     def server_config(self):
+        '''Метод создающий окно с настройками сервера.'''
         global config_window
         config_window = ConfigWindow(self.config)
 
     def register_user(self):
+        '''Метод создающий окно регистрации пользователя.'''
         global reg_window
         reg_window = RegisterUser(self.database, self.server_thread)
         reg_window.show()
 
     def remove_user(self):
+        '''Метод создающий окно удаления пользователя.'''
         global rem_window
         rem_window = DelUserDialog(self.database, self.server_thread)
         rem_window.show()
-
-
