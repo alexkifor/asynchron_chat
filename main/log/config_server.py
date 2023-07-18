@@ -1,8 +1,9 @@
 import sys
 import os
 from logging.handlers import TimedRotatingFileHandler
+
 sys.path.append('../')
-from main.variables import *
+from main.common.variables import *
 
 
 LOG = logging.getLogger('server')

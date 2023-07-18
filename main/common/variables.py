@@ -1,6 +1,5 @@
 import logging
 
-
 DEFAULT_PORT = 7777
 DEFAULT_IP = '127.0.0.1'
 LOG_LEVEL = logging.DEBUG
@@ -8,7 +7,6 @@ MAX_CONNECT = 5
 MAX_PACKAGE_LENGTH = 10240
 SERVER_CONFIG = 'server.ini'
 ENCODING = 'utf-8'
-
 
 ACTION = 'action'
 TIME = 'time'

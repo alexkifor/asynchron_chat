@@ -1,8 +1,9 @@
 import sys
 import os
 import logging
+
 sys.path.append('../')
-from variables import LOG_LEVEL
+from main.common.variables import LOG_LEVEL
 
 
 LOG =  logging.getLogger('client')

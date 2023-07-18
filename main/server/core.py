@@ -1,28 +1,30 @@
 import json
 import socket
 import sys
-import argparse
-sys.path.append('../../')
 import select
 import threading
+
 import hmac
 import binascii
-import configparser
+
+sys.path.append('../../')
 from main.log.config_server import *
-from main.variables import *
-from main.utils import *
-from main.decos import log, login_required
-from main.discripts import Port, Addr
-from main.metaclasses import ServerVerifier
-from main.server.server_db import ServerPool
-from PyQt5.QtWidgets import QApplication, QMessageBox
-from PyQt5.QtCore import QTimer
+from main.common.utils import *
+from main.common.decos import login_required
+from main.common.discripts import Port, Addr
+from main.common.metaclasses import ServerVerifier
 
 
 logger = logging.getLogger('server')
 
 
-class Server(threading.Thread, metaclass=ServerVerifier):
+class Server(threading.Thread):
+    '''
+    Основной класс сервера. Принимает содинения, словари - пакеты
+    от клиентов, обрабатывает поступающие сообщения.
+    Работает в качестве отдельного потока.
+    '''
+
     port = Port()
     addr = Addr()
 
@@ -39,6 +41,7 @@ class Server(threading.Thread, metaclass=ServerVerifier):
         super().__init__()
 
     def init_socket(self):
+        '''Метод инициализатор сокета.'''
         logger.info(
             f'Запущен сервер, порт для подключений: {self.port} , адрес с которого принимаются подключения: \
             {self.addr}.Если адрес не указан, принимаются соединения с любых адресов.')
@@ -49,6 +52,7 @@ class Server(threading.Thread, metaclass=ServerVerifier):
         self.sock.listen(MAX_CONNECT)
 
     def run(self):
+        '''Метод основной цикл потока.'''
         self.init_socket()
         while self.running:
             try:
@@ -65,19 +69,27 @@ class Server(threading.Thread, metaclass=ServerVerifier):
             err_lst = []
             try:
                 if self.clients:
-                    recv_data_lst, self.listen_sock, self.error_sock = select.select(self.clients, self.clients, [], 0)
+                    recv_data_lst, self.listen_sock, self.error_sock = select.select(
+                        self.clients, self.clients, [], 0)
             except OSError as err:
                 logger.error(f'Ошибка работы с сокетами: {err.errno}')
 
             if recv_data_lst:
                 for client_with_message in recv_data_lst:
                     try:
-                        self.process_client_message(get_msg(client_with_message), client_with_message)
+                        self.process_client_message(
+                            get_msg(client_with_message), client_with_message)
                     except (OSError, json.JSONDecodeError, TypeError) as err:
-                        logger.debug(f'Получены данные из клиентского исключения.', exc_info=err)
+                        logger.debug(
+                            f'Получены данные из клиентского исключения.',
+                            exc_info=err)
                         self.remove_client(client_with_message)
 
     def remove_client(self, client):
+        '''
+        Метод обработчик клиента с которым прервана связь.
+        Ищет клиента и удаляет его из списков и базы:
+        '''
         logger.info(f'Клиент {client.getpeername()} отключился от сервера.')
         for name in self.names:
             if self.names[name] == client:
@@ -87,17 +99,20 @@ class Server(threading.Thread, metaclass=ServerVerifier):
         self.clients.remove(client)
         client.close()
 
-
     def process_message(self, message):
-        if message[DESTINATION] in self.names and self.names[message[DESTINATION]] in self.listen_sock:
+        '''Метод отправки сообщения клиенту.'''
+        if message[DESTINATION] in self.names and self.names[message[DESTINATION]
+                                                             ] in self.listen_sock:
             try:
                 send_msg(self.names[message[DESTINATION]], message)
-                logger.info(f'Отправлено сообщение пользователю {message[DESTINATION]} \
+                logger.info(
+                    f'Отправлено сообщение пользователю {message[DESTINATION]} \
                  от пользователя {message[SENDER]}.')
             except OSError:
                 self.remove_client(message[DESTINATION])
         elif message[DESTINATION] in self.names and self.names[message[DESTINATION]] not in self.listen_sock:
-            logger.error(f'Coeдинение с клиентом {message[DESTINATION]} была потеряна. \
+            logger.error(
+                f'Coeдинение с клиентом {message[DESTINATION]} была потеряна. \
              Соединение закрыто, отправка сообщения невозможна.')
             self.remove_client(self.names[message[DESTINATION]])
         else:
@@ -106,13 +121,15 @@ class Server(threading.Thread, metaclass=ServerVerifier):
 
     @login_required
     def process_client_message(self, message, client):
+        '''Метод отбработчик поступающих сообщений.'''
         logger.debug(f'Разбор сообщения от клиента : {message}')
         if ACTION in message and message[ACTION] == PRESENCE and TIME in message and USER in message:
             self.autorize_user(message, client)
         elif ACTION in message and message[ACTION] == MESSAGE and DESTINATION in message and TIME in message \
-            and SENDER in message and MESSAGE_TEXT in message and self.names[message[SENDER]] == client:
+                and SENDER in message and MESSAGE_TEXT in message and self.names[message[SENDER]] == client:
             if message[DESTINATION] in self.names:
-                self.database.process_message(message[SENDER], message[DESTINATION])
+                self.database.process_message(
+                    message[SENDER], message[DESTINATION])
                 self.process_message(message)
                 try:
                     send_msg(client, RESPONSE_200)
@@ -127,10 +144,10 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                     pass
             return
         elif ACTION in message and message[ACTION] == EXIT and ACCOUNT_NAME in message \
-            and self.names[message[ACCOUNT_NAME]] == client:
+                and self.names[message[ACCOUNT_NAME]] == client:
             self.remove_client(client)
         elif ACTION in message and message[ACTION] == GET_CONTACTS and USER in message \
-             and self.names[message[USER]] == client:
+                and self.names[message[USER]] == client:
             response = RESPONSE_202
             response[LIST_INFO] = self.database.get_contacts(message[USER])
             try:
@@ -154,7 +171,8 @@ class Server(threading.Thread, metaclass=ServerVerifier):
         elif ACTION in message and message[ACTION] == USERS_REQUEST and ACCOUNT_NAME in message \
                 and self.names[message[ACCOUNT_NAME]] == client:
             response = RESPONSE_202
-            response[LIST_INFO] = [user[0] for user in self.database.users_list()]
+            response[LIST_INFO] = [user[0]
+                                   for user in self.database.users_list()]
             try:
                 send_msg(client, response)
             except OSError:
@@ -183,6 +201,7 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                 self.remove_client(client)
 
     def autorize_user(self, message, sock):
+        '''Метод реализующий авторизцию пользователей.'''
         logger.debug(f'Старт процесс авторизации пользователя {message[USER]}')
         if message[USER][ACCOUNT_NAME] in self.names.keys():
             response = RESPONSE_400
@@ -210,7 +229,11 @@ class Server(threading.Thread, metaclass=ServerVerifier):
             message_auth = RESPONSE_511
             random_str = binascii.hexlify(os.urandom(64))
             message_auth[DATA] = random_str.decode('ascii')
-            hash = hmac.new(self.database.get_hash(message[USER][ACCOUNT_NAME]), random_str, 'MD5')
+            hash = hmac.new(
+                self.database.get_hash(
+                    message[USER][ACCOUNT_NAME]),
+                random_str,
+                'MD5')
             digest = hash.digest()
             logger.debug(f'Auth message = {message_auth}')
             try:
@@ -245,10 +268,9 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                 sock.close()
 
     def service_update_lists(self):
+        '''Метод реализующий отправки сервисного сообщения 205 клиентам.'''
         for client in self.names:
             try:
                 send_msg(self.names[client], RESPONSE_205)
             except OSError:
                 self.remove_client(self.names[client])
-
-

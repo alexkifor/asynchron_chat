@@ -1,26 +1,29 @@
-import socket
-from variables import *
 import sys
 import os
-import json
-import time
 import argparse
-import threading  
-sys.path.append('../')
-from decos import log
+
 from Cryptodome.PublicKey import RSA
 from PyQt5.QtWidgets import QApplication, QMessageBox
-from client.main_window import UserNameDialog, ClientMainWindow
-from client.client_db import ClientPool
-from client.transport import ClientTransport
-from errors import ServerError
-from log.config_client import *
 
+sys.path.append('../')
+from main.common.variables import *
+from main.common.decos import log
+from log.config_client import *
+from main.common.errors import ServerError
+from client.transport import ClientTransport
+from client.client_db import ClientPool
+from client.main_window import UserNameDialog, ClientMainWindow
 
 logger = logging.getLogger('client')
 
+
 @log
 def arg_parser():
+    '''
+    Парсер аргументов командной строки, возвращает кортеж из 4 элементов
+    адрес сервера, порт, имя пользователя, пароль.
+    Выполняет проверку на корректность номера порта.
+    '''
     parser = argparse.ArgumentParser()
     parser.add_argument('addr', default=DEFAULT_IP, nargs='?')
     parser.add_argument('port', default=DEFAULT_PORT, type=int, nargs='?')
@@ -50,7 +53,8 @@ if __name__ == '__main__':
         if start_dialog.ok_pressed:
             client_name = start_dialog.client_name.text()
             client_passwd = start_dialog.client_passwd.text()
-            logger.debug(f'Using USERNAME = {client_name}, PASSWD = {client_passwd}.')
+            logger.debug(
+                f'Using USERNAME = {client_name}, PASSWD = {client_passwd}.')
         else:
             exit(0)
     logger.info(
